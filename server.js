@@ -2,8 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const db = require("./db");
-const morgan = require("morgan");
+//const morgan = require("morgan");
 const app = express();
+const path = require("path");
 
 process.on("uncaughtException", (e) => {
   console.log(e);
@@ -11,6 +12,12 @@ process.on("uncaughtException", (e) => {
 
 app.use(cors());
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "client/build")));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+}
 
 // Get all Restaurants
 app.get("/api/v1/restaurants", async (req, res) => {
@@ -28,7 +35,7 @@ app.get("/api/v1/restaurants", async (req, res) => {
       },
     });
   } catch (err) {
-    console.log(err);
+    console.log("hello");
   }
 });
 
@@ -126,6 +133,10 @@ app.post("/api/v1/restaurants/:id/addReview", async (req, res) => {
     console.log(error);
   }
 });
+
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "client/build/index.html"));
+// });
 
 const port = process.env.PORT || 3005;
 app.listen(port, () => {

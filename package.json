@@ -2,8 +2,13 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": "12.16.1",
+    "yarn": "1.22.4"
+  },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && yarn add && yarn run build"
   },
   "license": "MIT",
   "dependencies": {
