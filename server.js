@@ -22,7 +22,6 @@ app.use(express.json());
 // Get all Restaurants
 //app.get("/api/v1/restaurants", async (req, res) => {
 app.get("/", async (req, res) => {
-  alert("greetings");
   // try {
   //   //const results = await db.query("select * from restaurants");
   //   const restaurantRatingData = await db.query(
