@@ -10,7 +10,11 @@ const path = require("path");
 //   console.log(e);
 // });
 
-app.use(cors());
+const corsOptions = {
+  origin: "https://flamboyant-haibt-e76548.netlify.app/",
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // app.use(express.static(path.join(__dirname, "client/build")));
