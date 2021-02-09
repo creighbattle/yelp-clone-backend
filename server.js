@@ -2,9 +2,7 @@
 const express = require("express");
 const cors = require("cors");
 const db = require("./db");
-//const morgan = require("morgan");
 const app = express();
-const path = require("path");
 
 // process.on("uncaughtException", (e) => {
 //   console.log(e);
@@ -24,17 +22,18 @@ app.use(express.json());
 app.get("/", async (req, res) => {
   try {
     //const results = await db.query("select * from restaurants");
-    const restaurantRatingData = await db.query(
-      "select * from restaurants left join (select restaurant_id, COUNT(*), TRUNC(AVG(rating),1) as average_rating from reviews group by restaurant_id) reviews on restaurants.id = reviews.restaurant_id;"
-    );
+    // const restaurantRatingData = await db.query(
+    //   "select * from restaurants left join (select restaurant_id, COUNT(*), TRUNC(AVG(rating),1) as average_rating from reviews group by restaurant_id) reviews on restaurants.id = reviews.restaurant_id;"
+    // );
 
-    res.status(200).json({
-      status: "success",
-      results: restaurantRatingData.rows.length,
-      data: {
-        restaurants: restaurantRatingData.rows,
-      },
-    });
+    // res.status(200).json({
+    //   status: "success",
+    //   results: restaurantRatingData.rows.length,
+    //   data: {
+    //     restaurants: restaurantRatingData.rows,
+    //   },
+    // });
+    res.send("<p>Hello</p>");
   } catch (err) {
     console.log("hello");
   }
