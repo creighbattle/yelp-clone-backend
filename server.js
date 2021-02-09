@@ -1,7 +1,7 @@
 //require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-//const db = require("./db");
+const db = require("./db");
 //const morgan = require("morgan");
 const app = express();
 const path = require("path");
@@ -10,9 +10,7 @@ const path = require("path");
 //   console.log(e);
 // });
 
-
 app.use(cors());
-app.options("*", cors());
 app.use(express.json());
 
 // app.use(express.static(path.join(__dirname, "client/build")));
